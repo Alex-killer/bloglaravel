@@ -9,7 +9,7 @@
                     @foreach($posts as $post)
                     <div class="col-md-4 fetured-post blog-post" data-aos="fade-right">
                         <div class="blog-post-thumbnail-wrapper">
-                            <img src="assets/images/blog_1.jpg" alt="blog post">
+                            <img src="{{ asset('assets/images/blog_1.jpg') }}" alt="blog post">
                         </div>
                         <p class="blog-post-category">Blog post</p>
                         <a href="#!" class="blog-post-permalink">
