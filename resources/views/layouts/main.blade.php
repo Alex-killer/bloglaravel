@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Blog</title>
 
-    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/vendors/font-awesome/css/all.min.css">
-    <link href="assets/vendors/aos/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/vendors/jquery/jquery.min.js"></script>
-    <script src="assets/js/loader.js"></script>
+    <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/all.min.css') }}">
+    <link href="{{ asset('assets/vendors/aos/aos.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <script src="{{ asset('assets/vendors/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/loader.js') }}"></script>
 </head>
 <body>
 <div class="edica-loader"></div>
 <header class="edica-header edica-landing-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="Edica"></a>
+            <a class="navbar-brand" href="index.html"><img src="{{ asset('assets/images/logo.svg') }}" alt="Edica"></a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,12 +30,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
-                        <div class="dropdown-menu" aria-labelledby="blogDropdown">
-                            <a class="dropdown-item" href="{{ route('post.index') }}">Blog Archive</a>
-                            <a class="dropdown-item" href="blog-single.html">Blog Post</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('post.index') }}">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
@@ -74,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 carousel-img-wrapper">
-                                <img src="assets/images/Slider_1.png" alt="carousel-img" class="img-fluid" width="350px">
+                                <img src="{{ asset('assets/images/Slider_1.png') }}" alt="carousel-img" class="img-fluid" width="350px">
                             </div>
                         </div>
                     </div>
@@ -136,20 +132,12 @@
                 <nav class="footer-nav">
                     <a href="#!" class="nav-link">Company</a>
                     <a href="#!" class="nav-link">Android App</a>
-                    <a href="#!" class="nav-link">ios App</a>
-                    <a href="#!" class="nav-link">Blog</a>
-                    <a href="#!" class="nav-link">Partners</a>
-                    <a href="#!" class="nav-link">Careers</a>
                 </nav>
             </div>
             <div class="col-md-3">
                 <nav class="footer-nav">
                     <a href="#!" class="nav-link">FAQ</a>
                     <a href="#!" class="nav-link">Reporting</a>
-                    <a href="#!" class="nav-link">Block Storage</a>
-                    <a href="#!" class="nav-link">Tools & Integrations</a>
-                    <a href="#!" class="nav-link">API</a>
-                    <a href="#!" class="nav-link">Pricing</a>
                 </nav>
             </div>
             <div class="col-md-3">
