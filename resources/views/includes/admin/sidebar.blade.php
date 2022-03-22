@@ -4,7 +4,7 @@
              with font-awesome or any other icon font library -->
         <li class="nav-item">
             <a href="{{ route('admin.post.index') }}" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
+                <i class="fas fa-solid fa-align-justify"></i>
                 <p>
                     Посты
                     <span class="badge badge-info right">2</span>

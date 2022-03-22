@@ -8,6 +8,9 @@
                     {{ $post->title }}
                 </div>
         @endforeach
+                <div class="mt-3">
+                    {{ $posts->withQueryString()->links() }}
+                </div>
         </div>
     </section>
 @endsection
