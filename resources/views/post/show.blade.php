@@ -16,7 +16,7 @@
                 </div>
                 <div class="row mb-5">
                     <div class="col-md-4 mb-3" data-aos="fade-right">
-                        <img src="assets/images/blog_post_1.jpg" alt="blog post" class="img-fluid">
+                        <img src="{{ asset('assets/images/blog_post_1.jpg') }}" alt="blog post" class="img-fluid">
                     </div>
                     <div class="col-md-4 mb-3" data-aos="fade-up">
                         <img src="assets/images/blog_post_2.jpg" alt="blog post" class="img-fluid">

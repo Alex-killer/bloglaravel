@@ -24,6 +24,18 @@ Route::get('/', 'HomeController@index')->name('home');
 //    Route::patch('/posts/{post}', 'UpdateController')->name('post.update');
 //    Route::delete('/posts/{post}', 'DestroyController')->name('post.delete');
 
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware'], function () {
+    Route::get('/', 'HomeController@index')->name('admin.index');
+    Route::get('/posts', 'PostController@index')->name('admin.post.index');
+});
 
 
 
+
+//Auth::routes();
+//
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//
+//Auth::routes();
+//
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
