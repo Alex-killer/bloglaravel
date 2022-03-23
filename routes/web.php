@@ -28,6 +28,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware'], functi
     Route::get('/', 'HomeController@index')->name('admin.index');
     Route::get('/posts', 'PostController@index')->name('admin.post.index');
     Route::get('/posts/create', 'PostController@create')->name('admin.post.create');
+    Route::post('/posts', 'PostController@store')->name('admin.post.store');
+    Route::get('/posts/{post}', 'PostController@show')->name('admin.post.show');
+    Route::get('/posts/{post}/edit', 'PostController@edit')->name('admin.post.edit');
+    Route::patch('/posts/{post}', 'PostController@update')->name('admin.post.update');
 });
 
 

@@ -7,7 +7,7 @@
                 <i class="fas fa-solid fa-align-justify"></i>
                 <p>
                     Посты
-                    <span class="badge badge-info right">2</span>
+{{--                    <span class="badge badge-info right">{{ $posts->count() }}</span>--}}
                 </p>
             </a>
         </li>
