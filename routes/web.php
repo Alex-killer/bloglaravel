@@ -32,6 +32,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware'], functi
     Route::get('/posts/{post}', 'PostController@show')->name('admin.post.show');
     Route::get('/posts/{post}/edit', 'PostController@edit')->name('admin.post.edit');
     Route::patch('/posts/{post}', 'PostController@update')->name('admin.post.update');
+    Route::delete('/posts/{post}', 'PostController@destroy')->name('admin.post.delete');
 });
 
 

@@ -11,14 +11,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(10);
-
         return view('admin.post.index', compact('posts'));
     }
 
     public function create()
     {
         $posts = Post::all();
-
         return view('admin.post.create', compact('posts'));
     }
 
@@ -55,5 +53,11 @@ class PostController extends Controller
         ]);
         $post->update($data);
         return redirect()->route('admin.post.show', $post->id);
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('admin.post.index');
     }
 }
