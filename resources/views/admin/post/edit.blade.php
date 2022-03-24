@@ -67,18 +67,36 @@
                                     <label for="user_id">Юзер</label>
                                     <input type="user_id" name="user_id" class="form-control" id="user_id" placeholder=">Юзер" value="{{ $post->user_id }}">
                                 </div>
-                {{--                <div class="form-group">--}}
-                {{--                    <label for="exampleInputFile">File input</label>--}}
-                {{--                    <div class="input-group">--}}
-                {{--                        <div class="custom-file">--}}
-                {{--                            <input type="file" class="custom-file-input" id="exampleInputFile">--}}
-                {{--                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="input-group-append">--}}
-                {{--                            <span class="input-group-text">Upload</span>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-            {{--                    </div>--}}
+                                <div class="form-group w-50">
+                                    <label for="exampleInputFile">Добавить превью</label>
+                                    <div class="w-50 mb-2">
+                                        <img src="{{ url('storage/' . $post->preview_image) }}" alt="preview_image" class="w-50">
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="preview_image">
+                                            <label class="custom-file-label" >Выбрать файл</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Загрузка</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group w-50">
+                                    <label for="exampleInputFile">Добавить изображение</label>
+                                    <div class="w-50 mb-2">
+                                        <img src="{{ url('storage/' . $post->main_image) }}" alt="main_image" class="w-50">
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="main_image">
+                                            <label class="custom-file-label" >Выбрать файл</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Загрузка</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 

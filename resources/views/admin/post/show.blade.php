@@ -27,6 +27,12 @@
                     <div>
                         <div>{{ $post->id }}. {{ $post->title }}</div>
                     </div>
+                    <div class="w-25 mb-2">
+                        <img src="{{ url('storage/' . $post->preview_image) }}" alt="preview_image" class="w-50">
+                    </div>
+                    <div class="w-50 mb-2">
+                        <img src="{{ url('storage/' . $post->main_image) }}" alt="main_image" class="w-50">
+                    </div>
                 </section>
             </div>
         </section>

@@ -38,11 +38,14 @@
                                     <th style="width: 1%">
                                         id
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 15%">
                                         Название
                                     </th>
                                     <th style="width: 10%">
                                         Категория
+                                    </th>
+                                    <th style="width: 10%">
+                                        Картинка
                                     </th>
                                     <th style="width: 8%" class="text-center">
                                         Публикация
@@ -69,6 +72,11 @@
                                     </td>
                                     <td >
                                         <span>{{ $post->category_id }}</span>
+                                    </td>
+                                    <td>
+                                        <div class="w-5">
+                                            <img src="{{ url('storage/' . $post->preview_image) }}" alt="no_image" class="w-50">
+                                        </div>
                                     </td>
                                     <td class="project-state">
                                         <span class="badge badge-success">Success</span>
