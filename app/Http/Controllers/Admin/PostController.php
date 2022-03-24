@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StoreRequest;
+use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostTag;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     public function index()
     {
@@ -26,21 +29,13 @@ class PostController extends Controller
         return view('admin.post.create', compact('posts', 'categories', 'tags'));
     }
 
-    public function store()
+    public function store(StoreRequest $request)
     {
-        $data = request()->validate([
-            'title' => 'string',
-            'content' => 'string',
-            'category_id' => '',
-            'tag_id' => '',
-            'user_id' => '',
-        ]);
-        $tags = $data['tag_id'];
-        unset($data['tag_id']);
+        $data = $request->validated();
+        $data['preview_image'] = Storage::put('/images', $data['preview_image']);
+        $data['main_image'] = Storage::put('/images', $data['main_image']);
 
-        $post = Post::create($data);
-
-        $post->tags()->attach($tags); // привязываем к конкретному посту теги, через модель Post  и связующую таблицу pivot(tags)
+        $this->service->store($data);
 
         return redirect()->route('admin.post.index');
     }
@@ -58,20 +53,12 @@ class PostController extends Controller
         return view('admin.post.edit', compact('post', 'categories', 'tags'));
     }
 
-    public function update(Post $post)
+    public function update(UpdateRequest $request, Post $post)
     {
-        $data = request()->validate([
-            'title' => 'required|string',
-            'content' => 'string',
-            'category_id' => '',
-            'tag_id' => '',
-            'user_id' => '',
-        ]);
-        $tags = $data['tag_id'];
-        unset($data['tag_id']);
+        $data = $request->validated();
 
-        $post->update($data);
-        $post->tags()->sync($tags); // удаление всех предыдущих тегов и добавление новых
+        $this->service->update($post, $data);
+
         return redirect()->route('admin.post.show', $post->id);
     }
 
