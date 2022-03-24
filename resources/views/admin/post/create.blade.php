@@ -35,32 +35,54 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Название</label>
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Название">
+                                    <input value="{{ old('title') }}" type="text" name="title" class="form-control" id="title" placeholder="Название">
+
+                                    @error('title')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Текст</label>
-                                    <textarea name="content" class="form-control" id="content" placeholder="Текст"></textarea>
+                                    <textarea name="content" class="form-control" id="content" placeholder="Текст">{{ old('content') }}</textarea>
+                                    @error('content')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="category_id">Категория</label>
-                                    <input type="category_id" name="category_id" class="form-control" id="category_id" placeholder="Категория">
+                                    <select class="form-control" id="category_id" name="category_id">
+                                        @foreach($categories as $category)
+                                        <option
+                                            {{ old('category_id') == $category->id ? ' selected' : '' }}
+                                            value="{{ $category->id }}">{{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tag_id">Тэги</label>
+                                    <select multiple="" class="form-control" id="tag_id" name="tag_id[]">
+                                        @foreach($tags as $tag)
+                                        <option
+                                            value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="user_id">Юзер</label>
-                                    <input type="user_id" name="user_id" class="form-control" id="user_id" placeholder=">Юзер">
+                                    <input type="user_id" name="user_id" class="form-control" id="user_id" placeholder="Юзер">
                                 </div>
-                {{--                <div class="form-group">--}}
-                {{--                    <label for="exampleInputFile">File input</label>--}}
-                {{--                    <div class="input-group">--}}
-                {{--                        <div class="custom-file">--}}
-                {{--                            <input type="file" class="custom-file-input" id="exampleInputFile">--}}
-                {{--                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="input-group-append">--}}
-                {{--                            <span class="input-group-text">Upload</span>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                 </div>--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="exampleInputFile">File input</label>--}}
+{{--                                    <div class="input-group">--}}
+{{--                                        <div class="custom-file">--}}
+{{--                                            <input type="file" class="custom-file-input" id="exampleInputFile">--}}
+{{--                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="input-group-append">--}}
+{{--                                            <span class="input-group-text">Upload</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                 </div>--}}
                             </div>
                             <!-- /.card-body -->
 

@@ -43,7 +43,25 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="category_id">Категория</label>
-                                    <input type="category_id" name="category_id" class="form-control" id="category_id" placeholder="Категория" value="{{ $post->category_id }}">
+                                    <select class="form-control" id="category_id" name="category_id">
+                                        @foreach($categories as $category)
+                                            <option
+                                                {{ $category->id == $post->category->id ? ' selected' : ''}}
+                                                value="{{ $category->id }}">{{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tag_id">Тэги</label>
+                                    <select multiple="" class="form-control" id="tag_id" name="tag_id[]">
+                                        @foreach($tags as $tag)
+                                            <option
+                                                @foreach($post->tags as $postTag)
+                                                {{ $tag->id == $postTag->id ? ' selected' : ''}}
+                                                @endforeach
+                                                value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="user_id">Юзер</label>

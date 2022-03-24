@@ -19,7 +19,6 @@ class PostFactory extends Factory
         return [
             'category_id' => Category::get()->random()->id,
             'user_id' => User::get()->random()->id,
-            'tag_id' => Tag::get()->random()->id,
             'title' => $this->faker->word,
             'content' => $this->faker->text(100),
             'is_published' => rand(0, 1),
