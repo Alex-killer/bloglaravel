@@ -36,10 +36,16 @@
                                 <div class="form-group">
                                     <label for="title">Название</label>
                                     <input type="text" name="title" class="form-control" id="title" placeholder="Название" value="{{ $post->title }}">
+                                    @error('title')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Текст</label>
                                     <textarea name="content" class="form-control" id="content" placeholder="Текст">{{ $post->content }}</textarea>
+                                    @error('content')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="category_id">Категория</label>
@@ -50,18 +56,20 @@
                                                 value="{{ $category->id }}">{{ $category->title }}</option>
                                         @endforeach
                                     </select>
+                                    @error('category_id')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="tag_id">Тэги</label>
-                                    <select multiple="" class="form-control" id="tag_id" name="tag_id[]">
+                                    <select multiple="multiple" class="select2" id="tag_ids" name="tag_ids[]" style="width: 100%;">
                                         @foreach($tags as $tag)
-                                            <option
-                                                @foreach($post->tags as $postTag)
-                                                {{ $tag->id == $postTag->id ? ' selected' : ''}}
-                                                @endforeach
-                                                value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                            <option {{ is_array( $post->tags->pluck('id')->toArray() ) && in_array( $tag->id, $post->tags->pluck('id')->toArray() ) ? ' selected' : '' }} value="{{ $tag->id }}">{{ $tag->title }}</option>
                                         @endforeach
                                     </select>
+                                    @error('tag_ids')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="user_id">Юзер</label>
@@ -81,6 +89,9 @@
                                             <span class="input-group-text">Загрузка</span>
                                         </div>
                                     </div>
+                                    @error('preview_image')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group w-50">
                                     <label for="exampleInputFile">Добавить изображение</label>
@@ -96,6 +107,9 @@
                                             <span class="input-group-text">Загрузка</span>
                                         </div>
                                     </div>
+                                    @error('main_image')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- /.card-body -->

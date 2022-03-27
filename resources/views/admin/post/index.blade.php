@@ -79,7 +79,7 @@
                                         </div>
                                     </td>
                                     <td class="project-state">
-                                        <span class="badge badge-success">Success</span>
+                                        <span class="badge badge-success">{{ $post->is_published }}</span>
                                     </td>
                                     <td><a href="{{ route('admin.post.show', $post->id) }}"><i class="far fa-eye"></i></a></td>
                                     <td><a href="{{ route('admin.post.edit', $post->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>

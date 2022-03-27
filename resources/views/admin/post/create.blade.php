@@ -71,7 +71,7 @@
                                     <label>Тэги</label>
                                     <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="Выберите тэги" style="width: 100%;">
                                         @foreach($tags as $tag)
-                                            <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                            <option {{ is_array( old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected' : '' }} value="{{ $tag->id }}">{{ $tag->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -81,9 +81,6 @@
                                 </div>
                                 <div class="form-group w-50">
                                     <label for="exampleInputFile">Добавить превью</label>
-                                    <div class="w-50 mb-2">
-                                        <img src="{{ url('storage/' . $post->preview_image) }}" alt="preview_image" class="w-50">
-                                    </div>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="preview_image">
@@ -93,12 +90,12 @@
                                             <span class="input-group-text">Загрузка</span>
                                         </div>
                                     </div>
+                                    @error('preview_image')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                  </div>
                                 <div class="form-group w-50">
                                     <label for="exampleInputFile">Добавить изображение</label>
-                                    <div class="w-50 mb-2">
-                                        <img src="{{ url('storage/' . $post->main_image) }}" alt="main_image" class="w-50">
-                                    </div>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="main_image">
@@ -108,6 +105,9 @@
                                             <span class="input-group-text">Загрузка</span>
                                         </div>
                                     </div>
+                                    @error('main_image')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- /.card-body -->

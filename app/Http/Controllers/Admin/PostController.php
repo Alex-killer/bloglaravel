@@ -32,9 +32,6 @@ class PostController extends BaseController
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-        $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
-
         $this->service->store($data);
 
         return redirect()->route('admin.post.index');
@@ -56,12 +53,9 @@ class PostController extends BaseController
     public function update(UpdateRequest $request, Post $post)
     {
         $data = $request->validated();
-        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-        $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
+        $post = $this->service->update($post, $data);
 
-        $this->service->update($post, $data);
-
-        return redirect()->route('admin.post.show', $post->id);
+        return redirect()->route('admin.post.show', compact('post'));
     }
 
     public function destroy(Post $post)
