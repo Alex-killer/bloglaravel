@@ -19,7 +19,7 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-{{ route('admin.post.create') }}
+
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -29,7 +29,7 @@
                     <div class="card">
 
                         <th>
-                            <a href="{{ route('admin.post.create') }}" type="button"  class="btn btn-block btn-primary btn-flat">Создать</a>
+                            <a href="{{ route('admin.category.create') }}" type="button"  class="btn btn-block btn-primary btn-flat">Создать</a>
                         </th>
                         <div class="card-body p-0">
                             <table class="table table-striped projects">
@@ -41,50 +41,30 @@
                                     <th style="width: 20%">
                                         Название
                                     </th>
-                                    <th style="width: 10%">
-                                        Категория
-                                    </th>
-                                    <th style="width: 10%">
-                                        Картинка
-                                    </th>
-                                    <th style="width: 8%" class="text-center">
-                                        Публикация
-                                    </th>
                                     <th colspan="3" style="width: 1%">
                                     </th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                @foreach($posts as $post)
+                                @foreach($categories as $category)
                                 <tr>
                                     <td>
-                                        {{ $post->id }}
+                                        {{ $category->id }}
                                     </td>
                                     <td>
                                         <a>
-                                            {{ $post->title }}
+                                            {{ $category->title }}
                                         </a>
                                         <br>
                                         <small>
-                                            {{ $post->created_at }}
+                                            {{ $category->created_at }}
                                         </small>
                                     </td>
+                                    <td><a href="#"><i class="far fa-eye"></i></a></td>
+                                    <td><a href="#" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                     <td>
-                                        <span>{{ $post->category_id }}</span>
-                                    </td>
-                                    <td>
-                                        <div class="w-75">
-                                            <img src="{{ url('storage/' . $post->preview_image) }}" alt="no_image" class="w-50">
-                                        </div>
-                                    </td>
-                                    <td class="project-state">
-                                        <span class="badge badge-success">{{ $post->is_published }}</span>
-                                    </td>
-                                    <td><a href="{{ route('admin.post.show', $post->id) }}"><i class="far fa-eye"></i></a></td>
-                                    <td><a href="{{ route('admin.post.edit', $post->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
-                                    <td>
-                                        <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
+                                        <form action="{{ route('admin.post.delete', $category->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="border-0 bg-opacity">
@@ -103,7 +83,7 @@
                 <section class="content">
                     <div class="container-fluid">
                             <div class="mt-3">
-                                {{ $posts->withQueryString()->links() }}
+                                {{ $categories->withQueryString()->links() }}
                             </div>
                     </div>
                 </section>
