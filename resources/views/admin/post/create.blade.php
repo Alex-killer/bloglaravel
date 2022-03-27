@@ -58,12 +58,20 @@
                                         @endforeach
                                     </select>
                                 </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="tag_id">Тэги</label>--}}
+{{--                                    <select multiple="" class="form-control" id="tag_id" name="tag_id[]">--}}
+{{--                                        @foreach($tags as $tag)--}}
+{{--                                        <option--}}
+{{--                                            value="{{ $tag->id }}">{{ $tag->title }}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
                                 <div class="form-group">
-                                    <label for="tag_id">Тэги</label>
-                                    <select multiple="" class="form-control" id="tag_id" name="tag_id[]">
+                                    <label>Тэги</label>
+                                    <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="Выберите тэги" style="width: 100%;">
                                         @foreach($tags as $tag)
-                                        <option
-                                            value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                            <option value="{{ $tag->id }}">{{ $tag->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -38,7 +38,7 @@
                                     <th style="width: 1%">
                                         id
                                     </th>
-                                    <th style="width: 15%">
+                                    <th style="width: 20%">
                                         Название
                                     </th>
                                     <th style="width: 10%">
@@ -70,11 +70,11 @@
                                             {{ $post->created_at }}
                                         </small>
                                     </td>
-                                    <td >
+                                    <td>
                                         <span>{{ $post->category_id }}</span>
                                     </td>
                                     <td>
-                                        <div class="w-5">
+                                        <div class="w-75">
                                             <img src="{{ url('storage/' . $post->preview_image) }}" alt="no_image" class="w-50">
                                         </div>
                                     </td>

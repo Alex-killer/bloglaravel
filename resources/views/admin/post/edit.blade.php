@@ -29,7 +29,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.post.update', $post->id) }}" method="post">
+                        <form action="{{ route('admin.post.update', $post->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="card-body">
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="form-group w-50">
                                     <label for="exampleInputFile">Добавить превью</label>
-                                    <div class="w-50 mb-2">
+                                    <div class="w-25  mb-2">
                                         <img src="{{ url('storage/' . $post->preview_image) }}" alt="preview_image" class="w-50">
                                     </div>
                                     <div class="input-group">
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="form-group w-50">
                                     <label for="exampleInputFile">Добавить изображение</label>
-                                    <div class="w-50 mb-2">
+                                    <div class="w-50  mb-2">
                                         <img src="{{ url('storage/' . $post->main_image) }}" alt="main_image" class="w-50">
                                     </div>
                                     <div class="input-group">
