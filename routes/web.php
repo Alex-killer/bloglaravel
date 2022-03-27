@@ -37,6 +37,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware'], functi
     Route::get('/categories', 'CategoryController@index')->name('admin.category.index');
     Route::get('/categories/create', 'CategoryController@create')->name('admin.category.create');
     Route::post('/categories', 'CategoryController@store')->name('admin.category.store');
+    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('admin.category.delete');
 });
 
 

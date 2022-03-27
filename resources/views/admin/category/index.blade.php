@@ -64,7 +64,7 @@
                                     <td><a href="#"><i class="far fa-eye"></i></a></td>
                                     <td><a href="#" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                     <td>
-                                        <form action="{{ route('admin.post.delete', $category->id) }}" method="POST">
+                                        <form action="{{ route('admin.category.delete', $category->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="border-0 bg-opacity">

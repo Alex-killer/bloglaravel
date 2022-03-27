@@ -31,4 +31,10 @@ class CategoryController extends BaseController
 
         return redirect()->route('admin.category.index');
     }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return redirect()->route('admin.category.index');
+    }
 }
