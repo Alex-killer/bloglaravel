@@ -10,8 +10,8 @@ class Service
 {
     public function store($data)
     {
-        $tags = $data['tag_id'];
-        unset($data['tag_id']);
+        $tags = $data['tag_ids'];
+        unset($data['tag_ids']);
 
         $post = Post::create($data);
 

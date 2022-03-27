@@ -28,6 +28,8 @@ class UpdateRequest extends FormRequest
             'content' => 'required|string',
             'category_id' => '',
             'tag_id' => '',
+            'preview_image' => 'nullable|file',
+            'main_image' => 'nullable|file',
             'user_id' => '',
         ];
     }
