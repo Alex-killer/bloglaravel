@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Создание Категории</h1>
+                        <h1 class="m-0">Создание Тега</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -26,7 +26,7 @@
                 <section class="content">
                     <div class="card card-primary w-50">
                         <!-- form start -->
-                        <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.tag.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">

@@ -12,4 +12,9 @@ class Service
     {
         Category::firstOrCreate($data);
     }
+
+    public function update($category, $data)
+    {
+        $category->update($data);
+    }
 }

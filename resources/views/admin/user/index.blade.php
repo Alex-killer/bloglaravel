@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Категории</h1>
+                        <h1 class="m-0">Пользователи</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -29,7 +29,7 @@
                     <div class="card">
 
                         <th>
-                            <a href="{{ route('admin.category.create') }}" type="button"  class="btn btn-block btn-primary btn-flat">Создать</a>
+                            <a href="{{ route('admin.user.create') }}" type="button"  class="btn btn-block btn-primary btn-flat">Создать</a>
                         </th>
                         <div class="card-body p-0">
                             <table class="table table-striped projects">
@@ -47,24 +47,24 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach($categories as $category)
+                                @foreach($users as $user)
                                 <tr>
                                     <td>
-                                        {{ $category->id }}
+                                        {{ $user->id }}
                                     </td>
                                     <td>
                                         <a>
-                                            {{ $category->title }}
+                                            {{ $user->name }}
                                         </a>
                                         <br>
                                         <small>
-                                            {{ $category->created_at }}
+                                            {{ $user->created_at }}
                                         </small>
                                     </td>
-                                    <td><a href="{{ route('admin.category.show', $category->id) }}"><i class="far fa-eye"></i></a></td>
-                                    <td><a href="{{ route('admin.category.edit', $category->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
+                                    <td><a href="{{ route('admin.user.show', $user->id) }}"><i class="far fa-eye"></i></a></td>
+                                    <td><a href="{{ route('admin.user.edit', $user->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                     <td>
-                                        <form action="{{ route('admin.category.delete', $category->id) }}" method="POST">
+                                        <form action="{{ route('admin.user.delete', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="border-0 bg-opacity">
@@ -83,7 +83,7 @@
                 <section class="content">
                     <div class="container-fluid">
                             <div class="mt-3">
-                                {{ $categories->withQueryString()->links() }}
+                                {{ $users->withQueryString()->links() }}
                             </div>
                     </div>
                 </section>

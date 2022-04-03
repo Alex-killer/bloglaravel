@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Создание Категории</h1>
+                        <h1 class="m-0">Редактирование Тега</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -26,13 +26,13 @@
                 <section class="content">
                     <div class="card card-primary w-50">
                         <!-- form start -->
-                        <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.tag.update', $tag->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PATCH')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Название</label>
-                                    <input value="{{ old('title') }}" type="text" name="title" class="form-control" id="title" placeholder="Название">
-
+                                    <input type="text" name="title" class="form-control" id="title" placeholder="Название" value="{{ $tag->title }}">
                                     @error('title')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -41,7 +41,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Создать</button>
+                                <button type="submit" class="btn btn-primary">Обновить</button>
                             </div>
                         </form>
                     </div>

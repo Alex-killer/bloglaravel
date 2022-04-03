@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,29 +25,53 @@ Route::get('/', 'HomeController@index')->name('home');
 //    Route::patch('/posts/{post}', 'UpdateController')->name('post.update');
 //    Route::delete('/posts/{post}', 'DestroyController')->name('post.delete');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('admin.index');
-    Route::get('/posts', 'PostController@index')->name('admin.post.index');
-    Route::get('/posts/create', 'PostController@create')->name('admin.post.create');
-    Route::post('/posts', 'PostController@store')->name('admin.post.store');
-    Route::get('/posts/{post}', 'PostController@show')->name('admin.post.show');
-    Route::get('/posts/{post}/edit', 'PostController@edit')->name('admin.post.edit');
-    Route::patch('/posts/{post}', 'PostController@update')->name('admin.post.update');
-    Route::delete('/posts/{post}', 'PostController@destroy')->name('admin.post.delete');
 
-    Route::get('/categories', 'CategoryController@index')->name('admin.category.index');
-    Route::get('/categories/create', 'CategoryController@create')->name('admin.category.create');
-    Route::post('/categories', 'CategoryController@store')->name('admin.category.store');
-    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('admin.category.delete');
+    Route::group(['prefix' => 'posts'], function () {
+        Route::get('/', 'PostController@index')->name('admin.post.index');
+        Route::get('/create', 'PostController@create')->name('admin.post.create');
+        Route::post('/', 'PostController@store')->name('admin.post.store');
+        Route::get('/{post}', 'PostController@show')->name('admin.post.show');
+        Route::get('/{post}/edit', 'PostController@edit')->name('admin.post.edit');
+        Route::patch('/{post}', 'PostController@update')->name('admin.post.update');
+        Route::delete('/{post}', 'PostController@destroy')->name('admin.post.delete');
+    });
+
+    Route::group(['prefix' => 'categories'], function () {
+        Route::get('/', 'CategoryController@index')->name('admin.category.index');
+        Route::get('/create', 'CategoryController@create')->name('admin.category.create');
+        Route::post('/', 'CategoryController@store')->name('admin.category.store');
+        Route::get('/{category}', 'CategoryController@show')->name('admin.category.show');
+        Route::get('/{category}/edit', 'CategoryController@edit')->name('admin.category.edit');
+        Route::patch('/{category}', 'CategoryController@update')->name('admin.category.update');
+        Route::delete('/{category}', 'CategoryController@destroy')->name('admin.category.delete');
+    });
+
+    Route::group(['prefix' => 'tags'], function () {
+        Route::get('/', 'TagController@index')->name('admin.tag.index');
+        Route::get('/create', 'TagController@create')->name('admin.tag.create');
+        Route::post('/', 'TagController@store')->name('admin.tag.store');
+        Route::get('/{tag}', 'TagController@show')->name('admin.tag.show');
+        Route::get('/{tag}/edit', 'TagController@edit')->name('admin.tag.edit');
+        Route::patch('/{tag}', 'TagController@update')->name('admin.tag.update');
+        Route::delete('/{tag}', 'TagController@destroy')->name('admin.tag.delete');
+    });
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', 'UserController@index')->name('admin.user.index');
+        Route::get('/create', 'UserController@create')->name('admin.user.create');
+        Route::post('/', 'UserController@store')->name('admin.user.store');
+        Route::get('/{user}', 'UserController@show')->name('admin.user.show');
+        Route::get('/{user}/edit', 'UserController@edit')->name('admin.user.edit');
+        Route::patch('/{user}', 'UserController@update')->name('admin.user.update');
+        Route::delete('/{user}', 'UserController@destroy')->name('admin.user.delete');
+    });
 });
 
 
 
 
-//Auth::routes();
-//
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//
-//Auth::routes();
+Auth::routes();
 //
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

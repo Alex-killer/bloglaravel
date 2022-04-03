@@ -19,7 +19,7 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-{{ route('admin.post.create') }}
+
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">

@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Посты</h1>
+                        <h1 class="m-0">Создание поста</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -25,10 +25,6 @@
             <div class="container-fluid">
                 <section class="content">
                     <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Создание поста</h3>
-                        </div>
-                        <!-- /.card-header -->
                         <!-- form start -->
                         <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -43,7 +39,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Текст</label>
-                                    <textarea name="content" class="form-control" id="content" placeholder="Текст">{{ old('content') }}</textarea>
+                                    <textarea id="summernote" name="content" placeholder="Текст">{{ old('content') }}</textarea>
                                     @error('content')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -57,6 +53,9 @@
                                             value="{{ $category->id }}">{{ $category->title }}</option>
                                         @endforeach
                                     </select>
+                                    @error('category_id')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Тэги</label>
