@@ -92,7 +92,7 @@
             </div>
 
             <!-- Sidebar Menu -->
-        @include('includes.admin.sidebar')
+        @include('personal.includes.sidebar')
         <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->

@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('personal.layouts.admin')
 
 @section('content')
     <div class="content-wrapper">
@@ -26,12 +26,12 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>{{ $data['usersCount'] }}</h3>
+                                <h3>1</h3>
 
-                                <p>Пользователей зарегистрировано</p>
+                                <p>Понравившиеся посты</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-solid fa-users"></i>
+                                <i class="fas fa-heart"></i>
                             </div>
                             <a href="{{ route('admin.user.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -41,44 +41,14 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>{{ $data['categoriesCount'] }}</h3>
+                                <h3>1</h3>
 
-                                <p>Всего категорий</p>
+                                <p>Комментарии</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-solid fa-align-justify"></i>
+                                <i class="fas fa-comment"></i>
                             </div>
                             <a href="{{ route('admin.category.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>{{ $data['postsCount'] }}</h3>
-
-                                <p>Всего постов</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-clipboard"></i>
-                            </div>
-                            <a href="{{ route('admin.post.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>{{ $data['tagsCount'] }}</h3>
-
-                                <p>Всего тегов</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-solid fa-tags"></i>
-                            </div>
-                            <a href="{{ route('admin.tag.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

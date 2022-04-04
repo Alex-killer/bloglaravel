@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\Services\Post;
+namespace App\Services;
 
 
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class Service
+class PostService
 {
     public function store($data)
     {
@@ -42,10 +42,10 @@ class Service
                 unset($data['tag_ids']);
             }
 
-            if(isset($data['preview_image'])) {
+            if( isset($data['preview_image'])) {
                 $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
             }
-            if(isset($data['main_image'])) {
+            if( isset($data['main_image'])) {
                 $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
             }
 

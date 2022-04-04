@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('admin.layouts.admin')
 
 @section('content')
     <div class="content-wrapper">
@@ -11,8 +11,8 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item active">Пользователя</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -41,6 +41,9 @@
                                     <th style="width: 20%">
                                         Название
                                     </th>
+                                    <th style="width: 20%">
+                                        Роль
+                                    </th>
                                     <th colspan="3" style="width: 1%">
                                     </th>
                                 </tr>
@@ -60,6 +63,9 @@
                                         <small>
                                             {{ $user->created_at }}
                                         </small>
+                                    </td>
+                                    <td>
+                                        {{ $user->role }}
                                     </td>
                                     <td><a href="{{ route('admin.user.show', $user->id) }}"><i class="far fa-eye"></i></a></td>
                                     <td><a href="{{ route('admin.user.edit', $user->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>

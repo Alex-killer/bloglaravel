@@ -25,7 +25,17 @@ Route::get('/', 'HomeController@index')->name('home');
 //    Route::patch('/posts/{post}', 'UpdateController')->name('post.update');
 //    Route::delete('/posts/{post}', 'DestroyController')->name('post.delete');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
+        Route::get('/main', 'HomeController@index')->name('personal.main.index');
+        Route::get('/liked', 'LikedController@index')->name('personal.liked.index');
+        Route::delete('/liked{post}', 'LikedController@destroy')->name('personal.liked.delete');
+
+        Route::get('/comments', 'CommentController@index')->name('personal.comment.index');
+
+
+});
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function () {
     Route::get('/', 'HomeController@index')->name('admin.index');
 
     Route::group(['prefix' => 'posts'], function () {
@@ -73,5 +83,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
 
 
 Auth::routes();
-//
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

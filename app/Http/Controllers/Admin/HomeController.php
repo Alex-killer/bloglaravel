@@ -12,11 +12,12 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-        $posts = Post::all();
-        $categories = Category::all();
-        $users = User::all();
-        $tags = Tag::all();
+        $data = [];
+        $data['usersCount'] = User::all()->count();
+        $data['categoriesCount'] = Category::all()->count();
+        $data['postsCount'] = Post::all()->count();
+        $data['tagsCount'] = Tag::all()->count();
 
-        return view('admin.index', compact('posts', 'categories', 'users', 'tags'));
+        return view('admin.index', compact('data'));
     }
 }
