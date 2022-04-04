@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Admin\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,10 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string',
+            'email' => 'required|string|email|unique:users,email,' .$this->user_id,
+            'user_id' => 'required|integer|exists:users,id',
             'role' => 'required|string',
+
         ];
     }
 
@@ -38,10 +39,8 @@ class StoreRequest extends FormRequest
             'name.string' => 'Имя должно быть строкой',
             'email.required' => 'Это поле необходимо для заполнения',
             'email.string' => 'Почта должна быть строкой',
-            'email.email' => 'Ваша почта должна соответствовать формату mail@some.domain',
+            'email.email' => 'Ваша почта олжна соответствовать формату mail@some.domain',
             'email.unique' => 'Пользователь с таким email уже существует',
-            'password.required' => 'Это поле необходимо для заполнения',
-            'password.string' => 'Пароль должен быть строкой',
             'role.required' => 'Пароль должен быть строкой',
             'role.string' => 'Пароль должен быть строкой',
         ];

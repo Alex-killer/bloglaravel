@@ -51,9 +51,9 @@
                                         {{ $comment->created_at }}
                                     </small>
                                 </td>
-                                <td><a href="{{ route('admin.post.edit', $comment->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
+                                <td><a href="{{ route('personal.comment.edit', $comment->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                 <td>
-                                    <form action="{{ route('personal.liked.delete', $comment->id) }}" method="POST">
+                                    <form action="{{ route('personal.comment.delete', $comment->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="border-0 bg-opacity">

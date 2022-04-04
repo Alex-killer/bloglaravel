@@ -31,6 +31,9 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
         Route::delete('/liked{post}', 'LikedController@destroy')->name('personal.liked.delete');
 
         Route::get('/comments', 'CommentController@index')->name('personal.comment.index');
+        Route::get('/{comment}/edit', 'CommentController@edit')->name('personal.comment.edit');
+        Route::patch('/{comment}', 'CommentController@update')->name('personal.comment.update');
+        Route::delete('/{comment}', 'CommentController@destroy')->name('personal.comment.delete');
 
 
 });
@@ -84,4 +87,4 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
