@@ -47,10 +47,8 @@
                                     <th style="width: 10%">
                                         Картинка
                                     </th>
-                                    <th style="width: 8%" class="text-center">
-                                        Публикация
-                                    </th>
                                     <th colspan="3" style="width: 1%">
+                                        Действия
                                     </th>
                                 </tr>
                                 </thead>
@@ -71,15 +69,12 @@
                                         </small>
                                     </td>
                                     <td>
-                                        <span>{{ $post->category_id }}</span>
+                                        <span>{{ $post->category->title }}</span>
                                     </td>
                                     <td>
                                         <div class="w-75">
                                             <img src="{{ url('storage/' . $post->preview_image) }}" alt="no_image" class="w-50">
                                         </div>
-                                    </td>
-                                    <td class="project-state">
-                                        <span class="badge badge-success">{{ $post->is_published }}</span>
                                     </td>
                                     <td><a href="{{ route('admin.post.show', $post->id) }}"><i class="far fa-eye"></i></a></td>
                                     <td><a href="{{ route('admin.post.edit', $post->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>

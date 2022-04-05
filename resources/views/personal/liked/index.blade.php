@@ -51,7 +51,7 @@
                                         {{ $post->created_at }}
                                     </small>
                                 </td>
-                                <td><a href="{{ route('admin.post.show', $post->id) }}"><i class="far fa-eye"></i></a></td>
+                                <td><a href="{{ route('personal.liked.show', $post->id) }}"><i class="far fa-eye"></i></a></td>
                                 <td>
                                     <form action="{{ route('personal.liked.delete', $post->id) }}" method="POST">
                                         @csrf

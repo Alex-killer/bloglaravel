@@ -42,6 +42,7 @@
                                         Название
                                     </th>
                                     <th colspan="3" style="width: 1%">
+                                        Действия
                                     </th>
                                 </tr>
                                 </thead>

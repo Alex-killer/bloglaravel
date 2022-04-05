@@ -13,6 +13,11 @@ class LikedController extends Controller
         return view('personal.liked.index', compact('posts'));
     }
 
+    public function show(Post $post)
+    {
+        return view('personal.liked.show', compact('post'));
+    }
+
     public function destroy(Post $post)
     {
         auth()->user()->likedPosts()->detach($post->id);

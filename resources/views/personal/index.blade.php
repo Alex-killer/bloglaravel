@@ -26,14 +26,14 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>1</h3>
+{{--                                <h3>{{ $likes->count() }}</h3>--}}
 
                                 <p>Понравившиеся посты</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-heart"></i>
                             </div>
-                            <a href="{{ route('admin.user.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('personal.liked.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -41,14 +41,14 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>1</h3>
+                                <h3>{{ $comments->count() }}</h3>
 
                                 <p>Комментарии</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-comment"></i>
                             </div>
-                            <a href="{{ route('admin.category.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('personal.comment.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

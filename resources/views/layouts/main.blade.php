@@ -30,14 +30,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('post.index') }}">Блог</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                            <a class="dropdown-item" href="404.html">404</a>
-                            <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Контакты</a>
+                        @auth()
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('personal.main.index') }}">Личный кабинет</a>
+                            </li>
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="border-0 bg-transparent">
+                                    Выйти
+                                </button>
+                            </form>
+                        </li>
+                        @endauth
+                    <li class="nav-item">
+                        @guest()
+                            <a class="nav-link" href="{{ route('personal.main.index') }}">Войти</a>
+                        @endguest
                     </li>
                 </ul>
                 <ul class="navbar-nav mt-2 mt-lg-0">

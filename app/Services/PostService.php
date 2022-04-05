@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\Post;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,7 +28,7 @@ class PostService
                 $post->tags()->attach($tagIds); // привязываем к конкретному посту теги, через модель Post  и связующую таблицу pivot(tags)
             }
             Db::commit();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             Db::rollBack();
             abort(500);
         }
@@ -54,7 +55,7 @@ class PostService
                 $post->tags()->sync($tagIds); // удаление всех предыдущих тегов и добавление новых
             }
             Db::commit();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             Db::rollBack();
             abort(500);
         }

@@ -16,18 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 
-
     Route::get('/posts', 'PostController@index')->name('post.index');
-//    Route::get('/posts/create', 'CreateController')->name('post.create');
-//    Route::post('/posts', 'StoreController')->name('post.store');
     Route::get('/posts/{post}', 'PostController@show')->name('post.show');
-//    Route::get('/posts/{post}/edit', 'EditController')->name('post.edit');
-//    Route::patch('/posts/{post}', 'UpdateController')->name('post.update');
-//    Route::delete('/posts/{post}', 'DestroyController')->name('post.delete');
+
+    Route::post('/posts/{post}/comments', 'CommentController@store')->name('post.comment.store');
+    Route::post('/posts/{post}/likes', 'LikeController@store')->name('post.like.store');
 
 Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
         Route::get('/main', 'HomeController@index')->name('personal.main.index');
         Route::get('/liked', 'LikedController@index')->name('personal.liked.index');
+        Route::get('/liked/post/{post}', 'LikedController@show')->name('personal.liked.show');
         Route::delete('/liked{post}', 'LikedController@destroy')->name('personal.liked.delete');
 
         Route::get('/comments', 'CommentController@index')->name('personal.comment.index');
@@ -36,6 +34,13 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
         Route::delete('/{comment}', 'CommentController@destroy')->name('personal.comment.delete');
 
 
+});
+Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
+    Route::get('/', 'CategoryController@index')->name('category.index');
+
+    Route::group(['namespace' => 'Post', 'prefix' => '{category}/posts'], function () {
+        Route::get('/', 'PostController@index')->name('category.post.index');
+    });
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function () {

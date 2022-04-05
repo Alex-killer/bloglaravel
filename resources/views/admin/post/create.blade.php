@@ -66,10 +66,10 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="user_id">Юзер</label>
-                                    <input type="user_id" name="user_id" class="form-control" id="user_id" placeholder="Юзер">
-                                </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="user_id">Юзер</label>--}}
+{{--                                    <input type="user_id" name="user_id" class="form-control" id="user_id" placeholder="Юзер">--}}
+{{--                                </div>--}}
                                 <div class="form-group w-50">
                                     <label for="exampleInputFile">Добавить превью</label>
                                     <div class="input-group">

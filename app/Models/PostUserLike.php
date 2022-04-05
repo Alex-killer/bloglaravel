@@ -11,4 +11,9 @@ class PostUserLike extends Model
 
     protected $table = 'post_user_likes';
     protected $guarded = false;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

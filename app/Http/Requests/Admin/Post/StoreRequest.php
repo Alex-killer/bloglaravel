@@ -31,7 +31,7 @@ class StoreRequest extends FormRequest
             'tag_ids.*' => 'nullable|integer|exists:tags,id',
             'preview_image' => 'required|file',
             'main_image' => 'required|file',
-            'user_id' => '',
+//            'user_id' => '',
         ];
     }
 
